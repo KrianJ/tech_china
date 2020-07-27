@@ -17,3 +17,8 @@ class ChinaTechLoader(NewsLoader):
     # Join()将列表拼接成字符串，lambda xxxx: 去掉前后空白字符
     text_out = Compose(Join(), lambda s: s.strip())
     source_out = Compose(Join(), lambda s: s.strip())
+
+
+class ChinaDigiLoader(NewsLoader):
+    text_out = Compose(Join(), lambda s: s.strip())
+    source_out = Compose(Join(), lambda s: s.strip())

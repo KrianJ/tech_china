@@ -89,4 +89,9 @@ ITEM_PIPELINES = {
 
 MONGO_URI = 'localhost'
 MONGO_DB = 'china_tech'
-COLLECTION = 'telphone'
+# ['articles', 'internet', 'industrys', 'telphone']
+COLLECTION = 'internet'
+
+DIGI_MONGO_DB = 'china_digi'
+# ['smartphone', 'tabletpc', 'notebookpc', 'cameradv']
+DIGI_COLLECTION = 'cameradv'

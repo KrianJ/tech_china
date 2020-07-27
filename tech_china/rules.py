@@ -14,5 +14,10 @@ rules = {
              callback='parse_item'),
         Rule(LinkExtractor(restrict_xpaths='//div[@class="pages"]//a[contains(., "下一页")]',
                            process_value=lambda x: process_value(x)), follow=True, callback='parse_next_url')
+    ),
+    'china_digi': (
+        Rule(LinkExtractor(allow='.*?/digi/.*/.*\.html', restrict_xpaths='//div[@class="item_con"]//h3'), callback='parse_item'),
+        Rule(LinkExtractor(restrict_xpaths='//div[@class="pages"]//a[contains(., "下一页")]',
+                           process_value=lambda x: process_value(x)), follow=True, callback='parse_next_url')
     )
 }

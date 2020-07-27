@@ -20,8 +20,10 @@ class MongoPipeline:
     def from_crawler(cls, crawler):
         return cls(
             mongouri=crawler.settings.get('MONGO_URI'),
-            mongodb=crawler.settings.get('MONGO_DB'),
-            collection=crawler.settings.get('COLLECTION')
+            # mongodb=crawler.settings.get('MONGO_DB'),
+            # collection=crawler.settings.get('COLLECTION'),
+            mongodb=crawler.settings.get('DIGI_MONGO_DB'),
+            collection=crawler.settings.get('DIGI_COLLECTION')
         )
 
     def open_spider(self, spider):

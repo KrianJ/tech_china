@@ -1,0 +1,39 @@
+{
+  "spider": "universal",
+  "website": "中华网数码",
+  "type": "新闻",
+  "index": "http://digi.china.com",
+  "settings": {
+    "USER-AGENT": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.89 Safari/537.36 Edg/84.0.522.44"
+  },
+  "start_urls": {
+      "type": "dynamic",
+      "method": "china_digi"
+  },
+  "allowed_domains": ["digi.china.com"],
+  "rules": "china_digi",
+  "item": {
+    "class": "NewsItem",
+    "loader": "ChinaDigiLoader",
+    "attrs": {
+      "title": [
+      {"method": "xpath", "args": ["//div[@id='chan_mainBlk']/h1[@id='chan_newsTitle']/text()"]}
+    ],
+      "url": [
+      {"method": "attr", "args": ["url"]}
+    ],
+      "text": [
+      {"method": "xpath", "args": ["//div[@id='chan_newsBlk']/div[@id='chan_newsDetail']/p/text()"]}
+    ],
+      "datetime": [
+      {"method": "xpath", "args": ["//div[@class='chan_newsInfo_source']/span[@class='time']/text()"]}
+    ],
+      "source": [
+      {"method": "xpath", "args": ["//div[@class='chan_newsInfo_source']/span[@class='source']/text()"]}
+    ],
+      "website": [
+      {"method": "value", "args": ["中华网科技"]}
+    ]
+    }
+  }
+}

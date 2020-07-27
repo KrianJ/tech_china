@@ -50,7 +50,10 @@ class UniversalSpider(CrawlSpider):
     def parse_next_url(self, response):
         """解析根据rule过滤的下一页链接对应的列表页，提取详情页url加入调度器
         一定要加dont_filter=True，否则所有详情页url会被当做重复域名过滤掉"""
-        link = LinkExtractor(allow='.*?/article/.*/.*\.html', restrict_xpaths='//*[@id="rank-defList"]/div/div/div/h3')
+        # tech.china.com的链接抽取
+        # link = LinkExtractor(allow='.*?/article/.*/.*\.html', restrict_xpaths='//*[@id="rank-defList"]/div/div/div/h3')
+        # digi.china.com的链接抽取
+        link = LinkExtractor(allow='.*?/digi/.*/.*\.html', restrict_xpaths='//div[@class="item_con"]//h3')
         links = link.extract_links(response)
         for detail_url in links:
             yield Request(url=detail_url.url, callback=self.parse_item, dont_filter=True)
