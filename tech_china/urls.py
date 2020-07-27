@@ -6,6 +6,7 @@ __doc__ = """ """
 from tech_china.settings import COLLECTION
 
 
-def china_tech(start, end):
-    for page in range(start, end+1):
-        yield 'https://tech.china.com/' + COLLECTION + '/index_' + str(page) + '.html'
+def china_tech():
+    """获取china_tech.json中的start_urls"""
+    start_url = 'https://tech.china.com/' + COLLECTION + '/index.html'
+    yield start_url

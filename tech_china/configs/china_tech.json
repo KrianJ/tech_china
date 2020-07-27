@@ -8,8 +8,7 @@
   },
   "start_urls": {
       "type": "dynamic",
-      "method": "china_tech",
-      "args": [2, 10]
+      "method": "china_tech"
   },
   "allowed_domains": ["tech.china.com"],
   "rules": "china_tech",
