@@ -10,19 +10,23 @@ from tech_china import urls
 
 
 class UniversalSpider(CrawlSpider):
+    """tech.china.com的通用爬虫"""
     name = 'universal'
 
     def __init__(self, name, *args, **kwargs):
+        # 获取配置文件(configs/xx.json)，爬取规则(rules)，start_urls，allowed_domains
         config = get_config(name)
         self.config = config
         self.rules = rules.get(config.get('rules'))
         start_urls = config.get('start_urls')
         if start_urls:
+            """根据start_urls是否为动态获取生成start_urls"""
             if start_urls.get('type') == 'static':
                 self.start_urls = start_urls.get('value')
             elif start_urls.get('type') == 'dynamic':
                 self.start_urls = list(eval('urls.' + start_urls.get('method'))())
         self.allowed_domains = config.get('allowed_domains')
+        # 用UniversalSpider父类初始化方法的对继承自父类的属性进行初始化
         super(UniversalSpider, self).__init__(*args, **kwargs)
 
     def parse_item(self, response):

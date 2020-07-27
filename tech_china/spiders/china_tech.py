@@ -34,7 +34,8 @@ class ChinaTechSpider(CrawlSpider):
         yield loader.load_item()
 
     def parse_next_url(self, response):
-        """解析列表页"""
+        """解析根据rule过滤的下一页链接对应的列表页，提取详情页url加入调度器
+        一定要加dont_filter=True，否则所有详情页url会被当做重复域名过滤掉"""
         print('下一页列表页的链接:', response.url)
         link = LinkExtractor(allow='.*?/article/.*/.*\.html', restrict_xpaths='//*[@id="rank-defList"]/div/div/div/h3')
         links = link.extract_links(response)
